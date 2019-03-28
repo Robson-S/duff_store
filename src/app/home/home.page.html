@@ -1,12 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Ionic Blank
+      App Loja De Cerveja
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  Bem vindo ao App de Cerveja, mais famoso do brasil.
+  <br/>
+  <br/>
+  <h2>Conheça nossas Cervejas</h2>
+  <br/>
+  <ion-button color="warning" [routerLink]="['/puro-malte']"href="/puro-malte">Puro Malte</ion-button>
+  <ion-button color="danger" [routerLink]="['/pilsen']" href="/pilsen">Pilsen</ion-button>
+  <ion-button color="secondary" [routerLink]="['/lager']" href="/lager">Lager</ion-button>
 </ion-content>
