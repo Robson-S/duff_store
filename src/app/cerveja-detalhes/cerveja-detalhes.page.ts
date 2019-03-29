@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-cerveja-detalhes',
@@ -10,13 +11,20 @@ export class CervejaDetalhesPage implements OnInit {
   nome;
   detalhes;
 
-  constructor() { 
-
-    this.nome = 'Puro Malte';
-    this.detalhes = 'Tão gostoza que é proibida. A melhor puro malte do Ceara';
+  constructor(private route:ActivatedRoute) { 
+    console.log("EXECUTOU O CONSTRUTOR")
   }
 
   ngOnInit() {
-  }
+    let idcerveja = this.route.snapshot.params.id;
 
+  if(idcerveja === '50') {
+    this.nome ='Proibida'    
+    this.detalhes = 'Tão gostoza que é proibida. A melhor cerveja do Ceara'
+
+   } else if(idcerveja === '60') {
+    this.nome = 'skol'
+    this.detalhes = 'A puro malte que desce redondo.'
+   }
+  }
 }
