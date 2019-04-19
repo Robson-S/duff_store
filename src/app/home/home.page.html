@@ -17,5 +17,19 @@
   <br/>
   <h2>Conheça nossas Cervejas</h2>
   <br/>
+  <div *ngFor="let cerveja of cervejas">
+      <ion-card>
+          <ion-card-content>
+              <h2>
+                {{cerveja.nome}}
+              </h2>
+              <br/>
+              <p>
+                {{cerveja.descricao}}
+              </p>
+          </ion-card-content>
+        </ion-card>
+  </div>
+  
 
 </ion-content>
