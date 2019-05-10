@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +8,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit{
 
+  constructor(private router:Router){
+    this.cervejas = []
+  }
+
   cervejas;
 
-  ngOnInit(){
- 
+  ngOnInit(){}
+
+  excluir(nome){
+    localStorage.removeItem(nome)
+    this.listar()
   }
 
+  detalhes(nome){
+    this.router.navigate(["/cerveja-detalhes", nome])
+  }
+
+  listar(){
+    this.cervejas = []
+
+    const tamanhodobanco = localStorage.length
+
+    for (let index = 0; index < tamanhodobanco; index++) {
+      const chave = localStorage.key(index)
+      const cerveja = localStorage.getItem(chave)
+      const cervejaReal = JSON.parse(cerveja)
+      this.cervejas.push(cervejaReal)
+    }
+      
+  }
   ionViewDidEnter(){
-    this.cervejas = [];
-
-    const chavesDisponiveis = sessionStorage.getItem('chaves');
-    
-    const chavesSeparadas = chavesDisponiveis.split(';')
-
-    for(var i = 0; i < chavesSeparadas.length; i++){
-      const cerveja = sessionStorage.getItem(chavesSeparadas[i])
-      const cervejasObj = JSON.parse(cerveja)
-      this.cervejas.push(cervejasObj)
+      this.listar()
   }
-}
-}
+
+  }
